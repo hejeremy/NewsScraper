@@ -50,8 +50,8 @@ db.once("open", function() {
 // A GET request to scrape the echojs website
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
-  //const reqURL = 'http://www.echojs.com/';
-  const reqURL = 'https://www.reddit.com/';
+  const reqURL = 'http://www.echojs.com/';
+  //const reqURL = 'https://www.reddit.com/';
   request(reqURL, function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     let $ = cheerio.load(html);

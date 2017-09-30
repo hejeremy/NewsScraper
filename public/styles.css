@@ -23,3 +23,7 @@ textarea, input {
     display: block;
     width: 100%;
 }
+
+.articleInfo:hover { 
+    background-color: #99d6ff;
+}
