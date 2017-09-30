@@ -3,19 +3,19 @@ $.getJSON("/articles", function(data) {
   // For each one
   for (let i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p data-id='"
-      + data[i]._id + "'>"
-      + data[i].title
-      + "<br /><a href=\'"
+    $("#articles").append("<div class=\'articleInfo panel panel-default\' data-id='"
+      + data[i]._id + "'><div class=\'panel-heading\'>"
+      + data[i].title + "</div>"
+      + "<div class=\'panel-body\'><p>Insert Description</p><a href=\'"
       + data[i].link
-      + "\' target=\'_blank\'>Link</a></p>"
+      + "\' target=\'_blank\'>Link</a></div></div>"
     );
   }
 });
 
 
 // Whenever someone clicks a p tag
-$(document).on("click", "p", function() {
+$(document).on("click", ".articleInfo", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
@@ -29,15 +29,30 @@ $(document).on("click", "p", function() {
     // With that done, add the note information to the page
     .done(function(data) {
       //console.log(data);
-      // The title of the article
-      $("#notes").append("<h2>" + data.title + "</h2>");
-      // An input to enter a new title
-      $("#notes").append("<input id='titleinput' name='title' >");
-      // A textarea to add a new note body
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
-      // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-
+      $("#notes").append(
+        "<form class=\'form-horizontal\'>"
+        + "<fieldset>"
+          + "<legend>" + data.title + "</legend>"
+            + "<div class=\'form-group\'>"
+              + "<label for=\'titleinput\' class=\'col-lg-2 control-label\'>Title</label>"
+              + "<div class=\'col-lg-10\'>"
+                + "<input type=\'text\' class=\'form-control\' id=\'titleinput\' name=\'title\' placeholder=\'Title\'>"
+              + "</div>"
+            + "</div>"
+            + "<div class=\'form-group\'>"
+              + "<label for=\'bodyinput\' class=\'col-lg-2 control-label\'>Textarea</label>"
+              + "<div class=\'col-lg-10\'>"
+                + "<textarea class=\'form-control\' rows=\'5\' id='bodyinput' name=\'body\' placeholder=\'Write your note here!\'></textarea>"
+              + "</div>"
+            + "</div>"
+            + "<div class=\'form-group\'>"
+              + "<div class=\'col-lg-10 col-lg-offset-2\'>"
+                + "<button type=\'submit\' class=\'btn btn-primary\' data-id=\'" + data._id + "\' id=\'savenote\'>Save Note</button>"
+              + "</div>"
+            + "</div>"
+          + "</fieldset>"
+        + "</form>"
+      );
       // If there's a note in the article
       if (data.note) {
         // Place the title of the note in the title input
