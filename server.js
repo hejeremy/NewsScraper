@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-const dbURL = 'mongodb://heroku_nfdw3bc2:4i3hrjuvd07fekt121epeol88i@ds155424.mlab.com:55424/heroku_nfdw3bc2'
+const dbURL = "mongodb://heroku_nfdw3bc2:4i3hrjuvd07fekt121epeol88i@ds155424.mlab.com:55424/heroku_nfdw3bc2"
 mongoose.connect(dbURL);
 var db = mongoose.connection;
 
