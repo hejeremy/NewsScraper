@@ -3,7 +3,13 @@ $.getJSON("/articles", function(data) {
   // For each one
   for (let i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    $("#articles").append("<p data-id='"
+      + data[i]._id + "'>"
+      + data[i].title
+      + "<br /><a href=\'"
+      + data[i].link
+      + "\' target=\'_blank\'>Link</a></p>"
+    );
   }
 });
 
@@ -22,7 +28,7 @@ $(document).on("click", "p", function() {
   })
     // With that done, add the note information to the page
     .done(function(data) {
-      console.log(data);
+      //console.log(data);
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
