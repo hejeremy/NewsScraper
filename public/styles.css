@@ -7,6 +7,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 #articles {
     display: inline-block;
@@ -21,5 +22,4 @@ body {
 textarea, input {
     display: block;
     width: 100%;
-    background-color: #ffffff;
 }
